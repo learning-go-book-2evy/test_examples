@@ -19,4 +19,3 @@ func FileLen(f string, bufsize int) (int, error) {
 	}
 	return count, nil
 }
-
