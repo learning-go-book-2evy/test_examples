@@ -3,7 +3,7 @@ package solver
 import (
 	"context"
 	"errors"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -25,7 +25,7 @@ func (rs RemoteSolver) Resolve(ctx context.Context, expression string) (float64,
 		return 0, err
 	}
 	defer resp.Body.Close()
-	contents, err := ioutil.ReadAll(resp.Body)
+	contents, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return 0, err
 	}
@@ -38,4 +38,3 @@ func (rs RemoteSolver) Resolve(ctx context.Context, expression string) (float64,
 	}
 	return result, nil
 }
-
